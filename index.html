@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <button id="mode-toggle">🌙</button>
     <title>Nirmal Poudel - Portfolio</title>
     <link rel="stylesheet" href="styles/style.css">
     <script defer src="scripts/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -25,7 +27,7 @@
 
     <section id="about">
         <h2>About Me</h2>
-        <p>A passionate cybersecurity professional with expertise in SOC operations, vulnerability management, and incident response. Skilled in SIEM platforms and threat detection methodologies.</p>
+        <p>I’m Nirmal Poudel, a passionate cybersecurity professional specializing in SOC operations, vulnerability management, and incident response. With hands-on experience in SOC operations, vulnerability management, and incident response, I’ve worked with a range of security tools and technologies to identify and mitigate evolving threats. Always eager to learn and share knowledge, I aim to contribute to a safer digital world through my work and projects.</p>
     </section>
 
     <section id="experience">
@@ -72,20 +74,41 @@
         <h2>Blog</h2>
         <article>
             <h3>Threat Intelligence and its Role in SOC</h3>
-            <p>Threat Intelligence is a process of collecting, analyzing, and disseminating information about current and emerging threats to an organization's security. In a Security Operations Center (SOC), threat intelligence plays a crucial role in proactively identifying and mitigating potential risks. By integrating threat intelligence into SOC operations, organizations can enhance their ability to detect, respond to, and prevent security incidents.</p>
+            <p>Threat Intelligence is a process of collecting, analyzing, and disseminating information about current and emerging threats to an organization's security. In a Security Operations Center (SOC), threat intelligence plays a crucial role in proactively identifying and mitigating potential risks.</p>
             <p>For a comprehensive understanding, read the full article on Medium: <a href="https://medium.com/@nirmal.poudel7/threat-intelligence-and-its-role-in-soc-508f97d2f6b4" target="_blank">Threat Intelligence and its Role in SOC</a></p>
         </article>
     </section>
 
     <section id="contact">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:poudelnirmal7777@gmail.com">poudelnirmal7777@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/nirmal-poudel/" target="_blank">linkedin.com/in/nirmal-poudel</a></p>
-        <p>GitHub: <a href="https://github.com/nirmal7-np" target="_blank">github.com/nirmal7-np</a></p>
+        <form id="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name">
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Your email">
+            
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required placeholder="Your message"></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
     </section>
 
     <footer>
         <p>© 2025 Nirmal Poudel. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/nirmal-poudel/" target="_blank" class="social-icon">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/nirmal7-np" target="_blank" class="social-icon">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:poudelnirmal7777@gmail.com" class="social-icon">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        
     </footer>
 </body>
 </html>
