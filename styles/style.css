@@ -39,6 +39,8 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
+  gap: 20px;
+  padding: 0;
   justify-content: center;
   background-color: #34495e;  /* Dark Gray for both modes */
   border-radius: 25px;
@@ -48,12 +50,13 @@ nav ul {
 
 nav ul li {
   margin: 0 15px;
+  list-style: none;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 18px;
   text-transform: uppercase;
   padding: 10px 20px;
   transition: background-color 0.3s ease;
@@ -62,6 +65,40 @@ nav ul li a {
 nav ul li a:hover {
   background-color: #16a085;
   border-radius: 5px;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background: #222;
+        width: 100%;
+        top: 60px;
+        left: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
 }
 
 /* Section Styles */
