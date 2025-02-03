@@ -9,6 +9,11 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
     });
 });
 
+// Mobile Menu Toggle
+document.querySelector(".menu-toggle").addEventListener("click", function () {
+    document.querySelector("nav ul").classList.toggle("active");
+});
+
 // Form submission handler
 document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault(); // Prevent page refresh
