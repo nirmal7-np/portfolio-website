@@ -67,13 +67,17 @@ nav ul li a:hover {
   border-radius: 5px;
 }
 
-/* Mobile Menu Toggle */
+/* Move menu toggle to the left */
 .menu-toggle {
-    display: none;
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 20px; /* Changed from right to left */
     cursor: pointer;
     font-size: 24px;
     color: white;
 }
+
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
