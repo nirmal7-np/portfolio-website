@@ -3,76 +3,847 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#080e18" />
-  <meta name="description" content="Nirmal Poudel — London-based SOC Analyst and Security Engineer. Security monitoring, incident response, detection engineering, and SOC automation." />
+  <meta name="theme-color" content="#09111d" />
+  <meta name="description" content="Nirmal Poudel — SOC Analyst and Security Engineer. Cybersecurity portfolio focused on real blue-team work, incident response, SIEM, detection engineering and vulnerability management." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Nirmal Poudel | SOC Analyst & Security Engineer" />
-  <meta property="og:description" content="Building better detection. Investigating real threats. Engineering resilient security operations." />
+  <meta property="og:description" content="Blue-team cybersecurity portfolio with real SOC experience, detection work and security engineering." />
   <meta property="og:url" content="https://poudelnirmal.com.np/" />
   <link rel="canonical" href="https://poudelnirmal.com.np/" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles/main.css" />
-  <link rel="stylesheet" href="styles/refined.css" />
-  <script defer src="scripts/main.js"></script>
-  <title>Nirmal Poudel — Cybersecurity / SOC Engineering</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+:root{
+  color-scheme:dark;
+  --bg:#09111d;
+  --bg-2:#0c1626;
+  --panel:#101c2d;
+  --panel-2:#142337;
+  --line:#21334b;
+  --line-2:#28405d;
+  --text:#eef4ff;
+  --muted:#8ca0b8;
+  --accent:#66f2c4;
+  --accent-2:#63b4ff;
+  --danger:#ff6d7d;
+  --shadow:0 18px 60px rgba(0,0,0,.35);
+  --radius:22px;
+  --radius-sm:16px;
+  --shell:min(1160px, calc(100% - 28px));
+  --font-body:'Inter',sans-serif;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:var(--font-body);background:radial-gradient(circle at 10% 10%, rgba(99,180,255,.10), transparent 25%),radial-gradient(circle at 90% 15%, rgba(102,242,196,.08), transparent 28%),var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+img{max-width:100%;display:block}
+canvas#bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;opacity:.75}
+.skip-link{position:absolute;left:-9999px;top:auto}.skip-link:focus{left:16px;top:16px;z-index:1000;background:#fff;color:#000;padding:10px 14px;border-radius:12px}
+.shell{width:var(--shell);margin:0 auto}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(9,17,29,.68);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:78px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}.brand.small{gap:8px}
+.brand-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;border:1px solid rgba(102,242,196,.3);background:linear-gradient(180deg, rgba(102,242,196,.10), rgba(99,180,255,.08));font:700 18px var(--font-display);box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)}
+.brand-dot{color:var(--accent)}
+.brand-text{display:flex;flex-direction:column;font-weight:700;letter-spacing:-.02em}
+.brand-text small{font:500 11px/1.4 var(--font-mono);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.site-nav{display:flex;align-items:center;gap:22px}
+.site-nav a{font-size:14px;color:var(--muted);transition:.22s color}.site-nav a:hover,.site-nav a.active{color:var(--text)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.nav-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(102,242,196,.22);background:rgba(102,242,196,.08);font:500 11px/1 var(--font-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(102,242,196,.75);animation:pulse 1.8s infinite}
+.menu-button{display:none;flex-direction:column;justify-content:center;gap:4px;width:44px;height:44px;border-radius:12px;background:transparent;border:1px solid rgba(255,255,255,.08);color:var(--text);cursor:pointer}
+.menu-button span{display:block;width:18px;height:2px;background:currentColor;margin-inline:auto;border-radius:999px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center;min-height:calc(100vh - 78px);padding:56px 0 38px}
+.hero-kicker{margin:0 0 14px;font:600 11px/1.5 var(--font-mono);text-transform:uppercase;letter-spacing:.09em;color:var(--accent)}
+.hero h1{margin:0;font:700 clamp(40px,7vw,74px)/1.02 var(--font-display);letter-spacing:-.06em;max-width:11ch}
+.hero-intro{max-width:64ch;font-size:17px;color:#d6e3f2;margin:24px 0 0}
+.hero-points{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.hero-points span,.about-tags span,.tag-list span,.dense span{display:inline-flex;align-items:center;padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);font:500 12px/1.3 var(--font-mono);color:#cfe0f1}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:14px;border:1px solid transparent;font-weight:600;transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}.button:hover{transform:translateY(-2px)}
+.button-primary{background:linear-gradient(135deg,var(--accent),#7fd3ff);color:#08111d;box-shadow:0 12px 24px rgba(102,242,196,.18)}
+.button-secondary{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.10);color:var(--text)}
+.social-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px}.social-links a,.contact-panel-links>a:not(.button){color:var(--muted);font-weight:500}.social-links a:hover,.contact-panel-links>a:not(.button):hover{color:var(--text)}
+.hero-visual{position:relative}
+.terminal-window{position:relative;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.09);border-radius:26px;box-shadow:var(--shadow);overflow:hidden}
+.terminal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);font:500 12px/1.4 var(--font-mono);color:var(--muted)}
+.terminal-head-right{color:var(--accent)}
+.terminal-dots{display:inline-flex;gap:7px}.terminal-dots i{display:block;width:10px;height:10px;border-radius:50%;background:#364d69}.terminal-dots i:nth-child(1){background:#ff6c7e}.terminal-dots i:nth-child(2){background:#ffd76a}.terminal-dots i:nth-child(3){background:#66f2c4}
+.terminal-content{padding:24px 22px 22px}.terminal-line{font:500 13px/1.8 var(--font-mono);color:#d6e3f2}.terminal-line.output{color:#8fd9ff}.prompt{color:var(--accent);margin-right:10px}.typing-line{min-height:30px}.cursor{animation:blink .95s step-end infinite;color:var(--accent)}
+.terminal-separator{height:1px;background:rgba(255,255,255,.08);margin:18px 0}
+.terminal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mini-panel{padding:14px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}.mini-label{display:block;font:500 10px/1.3 var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:7px}.mini-panel strong{font-size:20px;letter-spacing:-.03em}
+.floating-note{position:absolute;padding:11px 14px;border-radius:16px;background:rgba(16,28,45,.86);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px);font:500 11px/1.4 var(--font-mono);color:#dbe9f7;box-shadow:var(--shadow)}.note-a{top:-14px;right:-12px}.note-b{bottom:-18px;left:-18px}
+.stat-band{padding:0 0 10px}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat-box{padding:20px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}.stat-box strong{display:block;font:700 24px/1.1 var(--font-display);letter-spacing:-.04em;margin-bottom:8px}.stat-box span{color:var(--muted);font-size:14px}
+.section{padding:92px 0}.section-soft{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01))}
+.section-grid{display:grid;grid-template-columns:.4fr .6fr;gap:40px}.section-side h2,.section-heading h2,.credentials-grid h2,.section-contact h2{margin:10px 0 0;font:700 clamp(30px,5vw,52px)/1.05 var(--font-display);letter-spacing:-.05em}
+.section-index{font:600 11px/1.4 var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}
+.section-main p,.section-heading p,.credential-intro,.timeline-card p,.case-card p,.process-card p,.tool-card p,.contact-shell p{color:#cfdaea}.lead{font-size:21px;line-height:1.6;color:var(--text);margin-top:0}
+.about-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.section-heading{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:28px}.section-heading>div{max-width:52ch}.section-heading p{max-width:46ch;margin:0}
+.strength-grid,.case-grid,.process-grid,.tool-columns,.credential-cards{display:grid;gap:18px}
+.strength-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.info-card,.timeline-card,.case-card,.process-card,.tool-card,.credential-card,.contact-panel,.repo-callout{background:linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+.info-card{padding:24px;position:relative;overflow:hidden}.info-card:before,.case-card:before,.process-card:before,.tool-card:before,.credential-card:before,.contact-panel:before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:1px;background:linear-gradient(90deg, transparent, rgba(102,242,196,.45), transparent);opacity:.75}
+.card-no{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:12px;background:rgba(102,242,196,.08);border:1px solid rgba(102,242,196,.17);font:700 13px var(--font-mono);color:var(--accent);margin-bottom:18px}
+.info-card h3,.case-card h3,.process-card h3,.tool-card h3,.credential-card h3,.repo-callout h3{margin:0 0 10px;font:700 24px/1.15 var(--font-display);letter-spacing:-.03em}.info-card p,.case-card p,.process-card p,.tool-card p{margin:0 0 16px;color:#cfdaea}
+.tag-list{display:flex;gap:8px;flex-wrap:wrap}.dense span{font-size:11px}
+.timeline{position:relative;display:grid;gap:18px}.timeline:before{content:"";position:absolute;left:170px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg, rgba(99,180,255,.12), rgba(102,242,196,.3), rgba(99,180,255,.12))}.timeline-item{display:grid;grid-template-columns:150px 40px 1fr;gap:18px;align-items:start}.timeline-date{padding-top:12px;font:600 12px/1.5 var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.timeline-dot{position:relative;width:18px;height:18px;border-radius:50%;margin-top:14px;background:var(--accent);box-shadow:0 0 0 5px rgba(102,242,196,.12)}.timeline-card{padding:24px 24px 22px}.timeline-top{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:12px}.timeline-top h3{margin:0;font:700 24px/1.1 var(--font-display)}.company{margin:8px 0 0;color:var(--muted)}.role-type{padding:8px 10px;border-radius:999px;background:rgba(99,180,255,.10);border:1px solid rgba(99,180,255,.18);font:600 10px/1 var(--font-mono);text-transform:uppercase;letter-spacing:.06em;color:#98d8ff}
+.case-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.case-card{padding:24px;position:relative}.case-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.case-label{font:600 11px/1.4 var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--accent)}.case-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.04);font-size:18px}.case-card ul{padding-left:18px;margin:0;color:#dbe7f4}.case-card li+li{margin-top:8px}
+.repo-callout{margin-top:22px;padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.process-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.process-card{position:relative;padding:22px 20px 20px}.step{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:rgba(99,180,255,.10);border:1px solid rgba(99,180,255,.18);font:700 13px var(--font-mono);color:#98d8ff;margin-bottom:16px}
+.tool-columns{grid-template-columns:repeat(2,minmax(0,1fr))}.tool-card{position:relative;padding:22px}
+.credentials-grid{display:grid;grid-template-columns:.42fr .58fr;gap:30px}.credential-cards{grid-template-columns:1fr}.credential-card{position:relative;padding:22px}.credential-label{display:inline-block;font:600 10px/1.5 var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px}.credential-date{display:block;margin-top:12px;font:600 11px/1.5 var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.section-contact{padding-top:86px}.contact-shell{display:grid;grid-template-columns:.48fr .52fr;gap:24px;align-items:start}.contact-email{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:clamp(20px,3vw,30px);letter-spacing:-.03em;margin-top:12px}.contact-panel{position:relative;padding:24px}.contact-panel-head{display:inline-flex;align-items:center;gap:9px;padding:8px 11px;border-radius:999px;background:rgba(102,242,196,.08);border:1px solid rgba(102,242,196,.14);font:600 11px/1 var(--font-mono);text-transform:uppercase;color:var(--accent)}.contact-panel-links{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:18px}
+.footer{padding:22px 0 38px;border-top:1px solid rgba(255,255,255,.06)}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .65s ease, transform .65s ease}.reveal-in{opacity:1;transform:none}
+.tilt-card{transform-style:preserve-3d;will-change:transform}.tilt-card:hover{border-color:rgba(102,242,196,.2)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(102,242,196,.65)}70%{box-shadow:0 0 0 11px rgba(102,242,196,0)}100%{box-shadow:0 0 0 0 rgba(102,242,196,0)}}
+@keyframes blink{50%{opacity:0}}
+@media (max-width: 1080px){
+  .hero,.section-grid,.credentials-grid,.contact-shell{grid-template-columns:1fr}
+  .hero{min-height:auto;padding-top:42px}
+  .section-heading{flex-direction:column;align-items:start}
+  .timeline:before{left:18px}
+  .timeline-item{grid-template-columns:1fr;gap:10px;padding-left:38px;position:relative}.timeline-date{padding-top:0}.timeline-dot{position:absolute;left:9px;top:43px;margin-top:0}
+  .strength-grid,.case-grid,.process-grid,.tool-columns{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 760px){
+  html{scroll-padding-top:72px}
+  .nav-inner{min-height:68px}.brand-text small,.nav-badge{display:none}
+  .site-nav{display:none;position:absolute;top:68px;left:14px;right:14px;flex-direction:column;align-items:flex-start;padding:16px;border-radius:18px;background:rgba(12,22,38,.98);border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+  .site-nav.open{display:flex}.menu-button{display:flex}
+  .hero h1{max-width:12ch}
+  .hero-intro{font-size:16px}
+  .hero-buttons,.social-links{gap:10px}
+  .terminal-grid,.stat-grid,.strength-grid,.case-grid,.process-grid,.tool-columns{grid-template-columns:1fr}
+  .floating-note{display:none}
+  .section{padding:72px 0}
+  .footer-inner{font-size:13px}
+}
+@media (max-width: 480px){
+  .hero h1{font-size:38px}
+  .button{width:100%}
+  .timeline-card,.info-card,.case-card,.process-card,.tool-card,.credential-card,.contact-panel,.repo-callout{padding:20px}
+  .repo-callout{flex-direction:column;align-items:start}
+  .contact-email{font-size:22px}
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  [data-reveal]{opacity:1;transform:none}
+}
+
+/* Hardening for narrow mobiles and desktop zoom */
+html,body{max-width:100%;}
+.shell,.section,.hero,.timeline,.timeline-card,.timeline-item,.timeline-top,.strength-grid,.case-grid,.process-grid,.tool-columns,.info-card,.case-card,.tool-card,.contact-shell,.credentials-grid{min-width:0;}
+.timeline-card,.timeline-top,.timeline-card p,.case-card,.contact-email,.section-heading,.section-grid{overflow-wrap:anywhere;word-break:normal;}
+.timeline-item{min-width:0;}
+.timeline-card{width:100%;max-width:100%;}
+@media(max-width:1080px){
+ .timeline:before{left:10px;}
+ .timeline-item{display:block;padding-left:34px;position:relative;}
+ .timeline-date{padding:0 0 12px;}
+ .timeline-dot{position:absolute;left:2px;top:8px;margin:0;width:16px;height:16px;}
+ .timeline-card{display:block;margin:0;min-width:0;}
+}
+@media(max-width:600px){
+ .timeline-top{display:block;}
+ .timeline-top .role-type{display:inline-flex;margin-top:12px;}
+ .timeline-card{padding:20px;}
+ .timeline-top h3{font-size:clamp(20px,6vw,25px);}
+ .hero{gap:34px;}
+ .hero h1{font-size:clamp(36px,10vw,48px);}
+ .hero-visual{width:100%;min-width:0;}
+ .terminal-window{width:100%;min-width:0;}
+ .terminal-content{padding:18px 15px;}
+ .terminal-line{font-size:clamp(10px,2.8vw,13px);overflow-wrap:anywhere;}
+ .terminal-head{font-size:10px;}
+ .mini-panel{min-width:0;}
+ .mini-panel strong{font-size:clamp(14px,4.5vw,20px);overflow-wrap:anywhere;}
+ .contact-email{display:block;font-size:clamp(15px,5vw,24px);}
+ .section-heading h2{font-size:clamp(29px,8vw,44px);}
+}
+
+</style>
+  <script defer>
+(() => {
+  const doc = document;
+  const menuButton = doc.getElementById('menu-toggle');
+  const navigation = doc.getElementById('site-nav');
+  const year = doc.getElementById('year');
+  if (year) year.textContent = String(new Date().getFullYear());
+
+  if (menuButton && navigation) {
+    menuButton.addEventListener('click', () => {
+      const isOpen = navigation.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    });
+    navigation.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navigation.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation');
+      });
+    });
+  }
+
+  // Active nav links
+  const sections = [...doc.querySelectorAll('main section[id]')];
+  const navLinks = [...doc.querySelectorAll('.site-nav a')];
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${id}`));
+    });
+  }, { threshold: 0.45 });
+  sections.forEach(section => sectionObserver.observe(section));
+
+  // Scroll reveal
+  const revealEls = doc.querySelectorAll('[data-reveal]');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const delay = entry.target.dataset.delay ? Number(entry.target.dataset.delay) : 0;
+      setTimeout(() => entry.target.classList.add('reveal-in'), delay);
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Counter animation
+  const countEls = doc.querySelectorAll('.count');
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = Number(el.dataset.count || 0);
+      const duration = 1200;
+      const start = performance.now();
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = String(Math.floor(target * eased));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.8 });
+  countEls.forEach(el => countObserver.observe(el));
+
+  // Typing effect
+  const typingTarget = doc.getElementById('typing-text');
+  const phrases = [
+    'SIEM monitoring and alert triage',
+    'phishing, malware and BEC investigations',
+    'YARA / SIGMA detection work',
+    'SOC integration and workflow automation',
+    'vulnerability management and remediation support'
+  ];
+  if (typingTarget) {
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
+      typingTarget.textContent = phrases[0];
+    } else {
+      const tick = () => {
+        const current = phrases[phraseIndex];
+        if (!deleting) {
+          charIndex++;
+          typingTarget.textContent = current.slice(0, charIndex);
+          if (charIndex === current.length) {
+            deleting = true;
+            return setTimeout(tick, 1500);
+          }
+          setTimeout(tick, 42);
+        } else {
+          charIndex--;
+          typingTarget.textContent = current.slice(0, charIndex);
+          if (charIndex === 0) {
+            deleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            return setTimeout(tick, 240);
+          }
+          setTimeout(tick, 24);
+        }
+      };
+      tick();
+    }
+  }
+
+  // Tilt cards
+  const tiltCards = doc.querySelectorAll('.tilt-card');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reducedMotion) {
+    tiltCards.forEach(card => {
+      let rafId;
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          const rx = (0.5 - py) * 6;
+          const ry = (px - 0.5) * 8;
+          card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+        });
+      });
+      card.addEventListener('mouseleave', () => {
+        cancelAnimationFrame(rafId);
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // Canvas background
+  const canvas = doc.getElementById('bg-canvas');
+  if (canvas && canvas.getContext && !reducedMotion) {
+    const ctx = canvas.getContext('2d');
+    let w = 0;
+    let h = 0;
+    let particles = [];
+    const mouse = { x: null, y: null, active: false };
+
+    let animationFrame = null;
+    const resize = () => {
+      w = canvas.width = window.innerWidth * Math.min(window.devicePixelRatio || 1, 2);
+      h = canvas.height = window.innerHeight * Math.min(window.devicePixelRatio || 1, 2);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      particles = Array.from({ length: Math.min(window.innerWidth < 720 ? 24 : 64, Math.floor(window.innerWidth / 28)) }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.8 + 0.8
+      }));
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(132, 205, 255, 0.55)';
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(102, 242, 196, ${0.11 * (1 - dist / 130)})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+
+        if (mouse.active && mouse.x !== null) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(99, 180, 255, ${0.16 * (1 - dist / 150)})`;
+            ctx.stroke();
+          }
+        }
+      }
+      if (!document.hidden) animationFrame = requestAnimationFrame(draw);
+    };
+
+    window.addEventListener('mousemove', (e) => {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      mouse.x = e.clientX * ratio;
+      mouse.y = e.clientY * ratio;
+      mouse.active = true;
+    });
+    window.addEventListener('mouseleave', () => { mouse.active = false; });
+    window.addEventListener('resize', resize);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) { cancelAnimationFrame(animationFrame); draw(); } });
+    resize();
+    draw();
+  }
+})();
+
+</script>
+  <title>Nirmal Poudel | SOC Analyst & Security Engineer</title>
 </head>
 <body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="site-noise" aria-hidden="true"></div>
+
   <header class="topbar" id="top">
     <div class="shell nav-inner">
-      <a class="brand" href="#top" aria-label="Nirmal Poudel, back to top"><span class="brand-mark">N<span class="brand-dot">.</span></span><span class="brand-word">NIRMAL<span class="muted"> / SECURITY</span></span></a>
-      <nav class="site-nav" id="site-nav" aria-label="Primary navigation"><a href="#about">About</a><a href="#expertise">Expertise</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
-      <div class="nav-actions"><button class="theme-button" id="theme-toggle" aria-label="Switch theme" title="Switch theme"><span aria-hidden="true">◐</span></button><a class="nav-cta" href="mailto:poudelnirmal7777@gmail.com">Let's connect <span aria-hidden="true">↗</span></a><button class="menu-button" id="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button></div>
+      <a class="brand" href="#top" aria-label="Nirmal Poudel, back to top">
+        <span class="brand-mark">N<span class="brand-dot">.</span></span>
+        <span class="brand-text">Nirmal Poudel <small>SOC / Security Engineering</small></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#strengths">Strengths</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <span class="nav-badge"><span class="live-dot"></span> Open to UK opportunities</span>
+        <button class="menu-button" id="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main">
     <section class="hero shell" aria-labelledby="hero-heading">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="live-dot"></span> LONDON, UNITED KINGDOM <span class="eyebrow-sep">/</span> CYBERSECURITY PROFESSIONAL</div>
-        <p class="hero-kicker">SOC ANALYST · SECURITY ENGINEER <span aria-hidden="true">↘</span></p>
-        <h1 id="hero-heading">I investigate.<br><span class="outline">I engineer.</span><br><span class="gradient-text">I defend.</span></h1>
-        <p class="hero-intro">I’m Nirmal, a London-based <strong>SOC Analyst & Security Engineer</strong> with <strong>three years of MSSP and enterprise experience</strong>. I investigate threats, build detection workflows and help teams respond with evidence—not guesswork.</p>
-        <div class="opportunity-line"><span class="live-dot"></span> OPEN TO UK SOC ANALYST &amp; CYBERSECURITY PLACEMENT OPPORTUNITIES</div>
-        <div class="hero-buttons"><a href="#work" class="button button-primary">Explore my work <span aria-hidden="true">↗</span></a><a href="#contact" class="button button-secondary">Get in touch <span aria-hidden="true">↗</span></a></div>
-        <div class="social-links"><a href="https://github.com/nirmal7-np" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/nirmal-poudel/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a><a href="mailto:poudelnirmal7777@gmail.com">EMAIL ↗</a></div>
+      <div class="hero-copy" data-reveal="up">
+        <p class="hero-kicker">LONDON, UNITED KINGDOM · BLUE TEAM CYBERSECURITY</p>
+        <h1 id="hero-heading">I work on the defensive side of security.</h1>
+        <p class="hero-intro">
+          I’m <strong>Nirmal Poudel</strong> — a <strong>SOC Analyst and Security Engineer</strong> with around <strong>3 years of hands-on experience</strong> across monitoring, investigation, detection engineering and vulnerability management.
+          Most of my work has been about helping teams understand what is happening in their environment and respond faster with better data.
+        </p>
+
+        <div class="hero-points">
+          <span>Tier 1 / Tier 2 alert triage</span>
+          <span>Phishing, malware & BEC investigations</span>
+          <span>SIEM & detection content</span>
+          <span>SOC integration & workflow automation</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#work" class="button button-primary">See my work <span aria-hidden="true">↗</span></a>
+          <a href="mailto:poudelnirmal7777@gmail.com" class="button button-secondary">Email me <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://github.com/nirmal7-np" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/nirmal-poudel/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="mailto:poudelnirmal7777@gmail.com">Email ↗</a>
+        </div>
       </div>
-      <div class="hero-visual" aria-label="Decorative security operations display">
-        <div class="orb orb-one"></div><div class="orb orb-two"></div>
-        <div class="terminal-window"><div class="terminal-head"><span class="terminal-dots"><i></i><i></i><i></i></span><span>security_ops / overview</span><span class="terminal-head-right">● LIVE</span></div><div class="terminal-content"><div class="terminal-line"><span class="line-num">01</span><span class="code-comment">// PROFILE STATUS</span></div><div class="terminal-line"><span class="line-num">02</span><span><span class="code-purple">const</span> analyst = {</span></div><div class="terminal-line"><span class="line-num">03</span><span>&nbsp; name: <span class="code-green">"Nirmal Poudel"</span>,</span></div><div class="terminal-line"><span class="line-num">04</span><span>&nbsp; focus: <span class="code-green">"SOC & Detection"</span>,</span></div><div class="terminal-line"><span class="line-num">05</span><span>&nbsp; location: <span class="code-green">"London, UK"</span>,</span></div><div class="terminal-line"><span class="line-num">06</span><span>&nbsp; experience: <span class="code-orange">"3+ years"</span>,</span></div><div class="terminal-line"><span class="line-num">07</span><span>&nbsp; mindset: <span class="code-green">"Defend. Detect. Respond."</span></span></div><div class="terminal-line"><span class="line-num">08</span><span>};</span></div><div class="terminal-separator"></div><div class="terminal-status"><span><span class="live-dot"></span> SYSTEM STATUS</span><strong>OPERATIONAL</strong></div><div class="signal-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="terminal-foot">&gt; always_learning<span class="cursor">_</span></div></div></div>
-        <div class="floating-tag floating-tag-top"><span class="tag-icon">⌘</span><span>DETECTION<br><strong>ENGINEERING</strong></span></div><div class="floating-tag floating-tag-bottom"><span class="tag-icon">◎</span><span>THREAT<br><strong>INTELLIGENCE</strong></span></div>
+
+      <div class="hero-visual" data-reveal="up" data-delay="120">
+        <div class="terminal-window tilt-card" id="hero-terminal">
+          <div class="terminal-head">
+            <span class="terminal-dots"><i></i><i></i><i></i></span>
+            <span>nirmal@security-ops:~</span>
+            <span class="terminal-head-right">LIVE</span>
+          </div>
+          <div class="terminal-content">
+            <div class="terminal-line"><span class="prompt">$</span> whoami</div>
+            <div class="terminal-line output">SOC Analyst / Security Engineer</div>
+            <div class="terminal-line"><span class="prompt">$</span> focus</div>
+            <div class="terminal-line output typing-line"><span id="typing-text"></span><span class="cursor">_</span></div>
+            <div class="terminal-line"><span class="prompt">$</span> current_status</div>
+            <div class="terminal-line output">MSc Cybersecurity · University of Hertfordshire</div>
+            <div class="terminal-separator"></div>
+            <div class="terminal-grid">
+              <div class="mini-panel">
+                <span class="mini-label">experience</span>
+                <strong><span class="count" data-count="3">0</span>+ yrs</strong>
+              </div>
+              <div class="mini-panel">
+                <span class="mini-label">roles</span>
+                <strong><span class="count" data-count="3">0</span></strong>
+              </div>
+              <div class="mini-panel">
+                <span class="mini-label">domains</span>
+                <strong>SIEM / IR / VM</strong>
+              </div>
+              <div class="mini-panel">
+                <span class="mini-label">mode</span>
+                <strong>blue team</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-note note-a">SIEM · SOAR · Detection</div>
+        <div class="floating-note note-b">Investigate → Improve → Repeat</div>
       </div>
-      <div class="hero-bottom"><div><span class="stat-number">03<span>+</span></span><span class="stat-label">YEARS IN CYBERSECURITY</span></div><div><span class="stat-number">24<span>×7</span></span><span class="stat-label">SOC MONITORING EXPOSURE</span></div><div><span class="stat-number">L1<span> / </span>L2</span><span class="stat-label">ALERT TRIAGE & RESPONSE</span></div><a class="scroll-prompt" href="#about">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
     </section>
 
-    <section class="section section-about" id="about"><div class="shell section-grid"><div class="section-side"><span class="section-index">01 / ABOUT</span><h2>Behind the<br><span class="gradient-text">terminal.</span></h2></div><div class="about-main"><p class="lead">My work connects hands-on investigations, practical security engineering and actionable outcomes.</p><p>I’m pursuing an <strong>MSc in Cybersecurity with Placement Year at the University of Hertfordshire</strong>, building on experience across enterprise and MSSP environments. At CryptoGen Nepal, I investigated incidents across SIEM, EDR and IDS/IPS systems. At Cyber Alert Nepal, I helped deploy an integrated open-source SOC.</p><p>I’ve worked across the detection lifecycle: onboarding log sources, mapping attacker techniques, building YARA and SIGMA detections, investigating security incidents, and supporting remediation. I enjoy making security operations more efficient without losing sight of human judgement.</p><div class="about-chips"><span>Enterprise &amp; MSSP operations</span><span>Hands-on SOC engineering</span><span>Always learning</span></div></div></div></section>
+    <section class="stat-band" data-reveal="fade">
+      <div class="shell stat-grid">
+        <div class="stat-box"><strong>24×7</strong><span>SOC operations exposure</span></div>
+        <div class="stat-box"><strong>Tier 1 / Tier 2</strong><span>alert triage and investigations</span></div>
+        <div class="stat-box"><strong>MSSP + Engineering</strong><span>operations and build experience</span></div>
+        <div class="stat-box"><strong>Placement-ready</strong><span>open to UK cybersecurity roles</span></div>
+      </div>
+    </section>
 
-    <section class="section section-expertise" id="expertise"><div class="shell"><div class="section-heading"><div><span class="section-index">02 / CAPABILITIES</span><h2>What I <span class="gradient-text">do best.</span></h2></div><p>A practical mix of monitoring, investigation, automation and risk reduction—grounded in my professional experience.</p></div><div class="expertise-grid"><article class="expertise-card"><span class="card-number">01</span><div class="card-symbol">◉</div><h3>Security monitoring & SIEM</h3><p>Log ingestion, correlation, alert triage, use-case engineering, tuning and investigation workflows.</p><div class="tag-list"><span>Wazuh</span><span>FortiSIEM</span><span>Logpoint</span><span>ELK</span></div></article><article class="expertise-card"><span class="card-number">02</span><div class="card-symbol">⌁</div><h3>Threat detection & hunting</h3><p>YARA and SIGMA detections, IOC/IOA analysis, MITRE ATT&amp;CK mapping and purple-team use cases.</p><div class="tag-list"><span>MITRE ATT&CK</span><span>YARA</span><span>SIGMA</span></div></article><article class="expertise-card"><span class="card-number">03</span><div class="card-symbol">↳</div><h3>Incident response & SOAR</h3><p>Tier 1/2 triage, phishing and BEC investigations, malware response, automated enrichment and case management.</p><div class="tag-list"><span>TheHive</span><span>Cortex</span><span>Shuffle</span><span>FortiSOAR</span></div></article><article class="expertise-card"><span class="card-number">04</span><div class="card-symbol">⬡</div><h3>Vulnerability management</h3><p>Tenable/Nessus assessments, CVE and CVSS prioritisation, reporting and remediation tracking.</p><div class="tag-list"><span>Tenable.io</span><span>Nessus</span><span>CVE/CVSS</span></div></article></div><div class="tool-strip"><span>ALSO WORKING WITH</span><p>Python <i>✳</i> Bash <i>✳</i> Docker <i>✳</i> Linux <i>✳</i> Windows Server <i>✳</i> Active Directory <i>✳</i> NIST CSF</p></div></div></section>
+    <section class="section" id="about">
+      <div class="shell section-grid">
+        <div class="section-side" data-reveal="up">
+          <span class="section-index">01 / ABOUT</span>
+          <h2>A little about me.</h2>
+        </div>
+        <div class="section-main" data-reveal="up" data-delay="120">
+          <p class="lead">
+            I’m someone who enjoys making messy security data easier to work with.
+          </p>
+          <p>
+            My background is mostly on the defensive side of cybersecurity. I’ve monitored alerts, investigated incidents, written detection logic, integrated security tools, and supported vulnerability remediation across client environments. I like work that is practical: finding what matters, reducing noise, and making the next investigation easier than the last one.
+          </p>
+          <p>
+            Right now I’m also completing my <strong>MSc in Cybersecurity with Placement Year at the University of Hertfordshire</strong>. I’m looking for opportunities where I can keep growing in SOC operations, security engineering, and detection-focused work.
+          </p>
+          <div class="about-tags">
+            <span>calm under pressure</span>
+            <span>clear reporting</span>
+            <span>client-facing support</span>
+            <span>continuous learner</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="section section-stack" id="stack"><div class="shell"><div class="section-heading"><div><span class="section-index">02A / TOOLKIT</span><h2>Technical <span class="gradient-text">toolkit.</span></h2></div><p>Capabilities grouped by their place in the detection and response lifecycle.</p></div><div class="stack-grid">
-<div class="stack-group"><span class="stack-heading">SIEM &amp; LOG ANALYTICS</span><div class="stack-pills"><span>Wazuh SIEM / XDR</span><span>FortiSIEM</span><span>Logpoint</span><span>ELK Stack</span><span>FortiAnalyzer</span></div></div>
-<div class="stack-group"><span class="stack-heading">ENDPOINT &amp; NETWORK DEFENCE</span><div class="stack-pills"><span>Trend Micro</span><span>FortiNDR</span><span>FortiDeceptor</span><span>IDS / IPS</span><span>Active Directory Log Analysis</span></div></div>
-<div class="stack-group"><span class="stack-heading">RESPONSE &amp; ORCHESTRATION</span><div class="stack-pills"><span>Shuffle</span><span>TheHive</span><span>Cortex</span><span>FortiSOAR</span><span>Playbook Automation</span></div></div>
-<div class="stack-group"><span class="stack-heading">ASSESSMENT &amp; ENGINEERING</span><div class="stack-pills"><span>Tenable.io</span><span>Nessus Professional</span><span>Metasploit Fundamentals</span><span>Python</span><span>Bash</span><span>Docker</span></div></div>
-</div></div></section>
-    <section class="section" id="experience"><div class="shell"><div class="section-heading"><div><span class="section-index">03 / EXPERIENCE</span><h2>My <span class="gradient-text">journey.</span></h2></div><p>From operational response to engineering and integrating security solutions.</p></div><div class="timeline"><article class="timeline-item"><div class="timeline-date">APR 2025 — SEP 2025</div><div class="timeline-track"><span></span></div><div class="timeline-body"><div class="timeline-header"><div><h3>SOC Engineer</h3><p class="company">Cyber Alert Nepal <span>· Remote</span></p></div><span class="role-type">ENGINEERING</span></div><p>Deployed and integrated Wazuh, Shuffle, TheHive and Cortex into an open-source SOC stack. Built ATT&amp;CK-aligned detection rules, SOAR playbooks and IOC-driven hunts, and documented analyst runbooks.</p><div class="tag-list"><span>SOC Architecture</span><span>Detection Engineering</span><span>SOAR</span></div></div></article><article class="timeline-item"><div class="timeline-date">OCT 2022 — MAR 2025</div><div class="timeline-track"><span></span></div><div class="timeline-body"><div class="timeline-header"><div><h3>Security Analyst (SOC)</h3><p class="company">CryptoGen Nepal <span>· Kathmandu, Nepal</span></p></div><span class="role-type">OPERATIONS</span></div><p>Performed Tier 1/2 monitoring for multiple MSSP clients under SLAs. Investigated phishing, BEC, malware and unauthorised access, developed YARA/SIGMA rules, integrated log sources and supported vulnerability remediation.</p><div class="tag-list"><span>Incident Response</span><span>Threat Hunting</span><span>SIEM</span><span>Vulnerability Management</span></div></div></article><article class="timeline-item"><div class="timeline-date">MAY 2022 — JUN 2022</div><div class="timeline-track"><span></span></div><div class="timeline-body"><div class="timeline-header"><div><h3>Endpoint Protection Browser Tester</h3><p class="company">Vairav Technology <span>· Kathmandu, Nepal</span></p></div><span class="role-type">CONTRACT</span></div><p>Tested browser resilience against phishing websites and malware samples, documenting reproducible findings for the engineering team.</p><div class="tag-list"><span>Endpoint Security</span><span>Security Testing</span></div></div></article></div></div></section>
+    <section class="section section-soft" id="strengths">
+      <div class="shell">
+        <div class="section-heading" data-reveal="up">
+          <div>
+            <span class="section-index">02 / STRENGTHS</span>
+            <h2>What I do best.</h2>
+          </div>
+          <p>
+            These are the areas where most of my real hands-on experience sits.
+          </p>
+        </div>
 
-    <section class="section section-work" id="work"><div class="shell"><div class="section-heading"><div><span class="section-index">04 / SELECTED WORK</span><h2>Inside the <span class="gradient-text">lab.</span></h2></div><p>Selected professional workflow examples based on my CV. Client environments and sensitive incident details remain private.</p></div><div class="work-grid"><article class="work-card featured"><div class="work-visual"><div class="workflow"><div class="workflow-node">LOG SOURCES</div><div class="workflow-connector">→</div><div class="workflow-node active">WAZUH / SIEM</div><div class="workflow-connector">→</div><div class="workflow-node">SOAR / CASES</div></div><div class="work-grid-pattern"></div><span class="work-visual-label">SECURITY OPERATIONS / WORKFLOW</span></div><div class="work-content"><div class="work-meta"><span>01 / ENGINEERING</span><span>PROFESSIONAL EXPERIENCE</span></div><h3>Integrated SOC workflows</h3><p>Deployed and integrated Wazuh, Shuffle, TheHive and Cortex for automated enrichment, faster triage and consistent incident response handoffs.</p><div class="tag-list"><span>Wazuh</span><span>Shuffle</span><span>TheHive</span><span>Cortex</span></div></div></article><article class="work-card"><div class="work-visual compact-visual"><div class="code-graphic"><span>rule detection_example {</span><span>&nbsp; condition:</span><span class="code-green">&nbsp;&nbsp; $suspicious_activity</span><span>}</span></div><span class="work-visual-label">DETECTION / RULES</span></div><div class="work-content"><div class="work-meta"><span>02 / DETECTION</span><span>PROFESSIONAL EXPERIENCE</span></div><h3>Detection engineering</h3><p>Developed custom YARA/SIGMA detections, mapped use cases to MITRE ATT&amp;CK and tuned alerts to improve their usefulness to analysts.</p><div class="tag-list"><span>YARA</span><span>SIGMA</span><span>ATT&CK</span></div></div></article><article class="work-card"><div class="work-visual compact-visual vuln-visual"><div class="vuln-rings"><span></span><span></span><span></span><strong>CVSS</strong></div><span class="work-visual-label">ASSESS / PRIORITISE / REMEDIATE</span></div><div class="work-content"><div class="work-meta"><span>03 / VULNERABILITY</span><span>PROFESSIONAL EXPERIENCE</span></div><h3>Risk-based assessments</h3><p>Performed vulnerability assessments with Tenable.io and Nessus Professional, prioritised findings and collaborated with system owners on remediation.</p><div class="tag-list"><span>Tenable.io</span><span>Nessus</span><span>CVSS</span></div></div></article></div><div class="repo-callout"><div><span class="section-index">OPEN SOURCE / PUBLIC CODE</span><h3>Curious about what I'm building?</h3><p>Explore my public repositories and experiments. Private client systems, incidents and data are not published.</p></div><a class="button button-secondary" href="https://github.com/nirmal7-np?tab=repositories" target="_blank" rel="noopener noreferrer">Browse GitHub <span aria-hidden="true">↗</span></a></div></div></section>
+        <div class="strength-grid">
+          <article class="info-card tilt-card" data-reveal="up">
+            <span class="card-no">01</span>
+            <h3>Monitoring & triage</h3>
+            <p>I’ve worked with SIEM, EDR and IDS/IPS alerts in live environments, handling prioritisation, escalation and initial investigation.</p>
+            <div class="tag-list"><span>Wazuh</span><span>FortiSIEM</span><span>Logpoint</span><span>ELK</span></div>
+          </article>
 
-<section class="section section-method" id="method"><div class="shell"><div class="section-heading"><div><span class="section-index">05 / INCIDENT RESPONSE</span><h2>From alert to <span class="gradient-text">action.</span></h2></div><p>My investigative approach, grounded in Tier 1/2 monitoring, incident response and detection engineering work.</p></div><div class="method-grid">
-<article class="method-card"><span class="method-step">01 / TRIAGE</span><b class="method-icon">⌕</b><h3>Qualify the signal</h3><p>Review SIEM, endpoint and network data. Determine severity, affected assets and urgency within agreed SLAs.</p><span class="method-tail">ALERTS · LOG CORRELATION · SLA</span></article>
-<article class="method-card"><span class="method-step">02 / INVESTIGATE</span><b class="method-icon">◎</b><h3>Build the context</h3><p>Correlate event sequences, investigate IOCs and IOAs, map techniques to MITRE ATT&amp;CK and preserve evidence.</p><span class="method-tail">THREAT INTEL · IOCS · TTPS</span></article>
-<article class="method-card"><span class="method-step">03 / RESPOND</span><b class="method-icon">↳</b><h3>Coordinate response</h3><p>Follow containment and escalation processes, communicate with stakeholders and document actionable findings.</p><span class="method-tail">CONTAINMENT · REPORTING · HANDOFF</span></article>
-<article class="method-card"><span class="method-step">04 / IMPROVE</span><b class="method-icon">↗</b><h3>Improve the next alert</h3><p>Tune detection rules, build new use cases and automate routine enrichment to strengthen coverage and reduce noise.</p><span class="method-tail">SIGMA · YARA · SOAR</span></article>
-</div></div></section>
-    <section class="section section-credentials" id="credentials"><div class="shell credentials-grid"><div><span class="section-index">06 / BACKGROUND</span><h2>Keep learning.<br><span class="gradient-text">Keep improving.</span></h2><p class="credential-intro">My networking and information-security degree underpins postgraduate study and the lessons learned from real SOC deployments.</p></div><div class="credential-cards"><div class="credential-card"><span class="credential-label">EDUCATION / CURRENT</span><h3>MSc Cybersecurity with Placement Year</h3><p>University of Hertfordshire · United Kingdom</p><span class="credential-date">JAN 2026 — JAN 2028 (EXPECTED)</span></div><div class="credential-card"><span class="credential-label">EDUCATION / COMPLETED</span><h3>BSc (Hons) Computer Networking and IT Security</h3><p>Islington College · Awarded by London Metropolitan University</p><span class="credential-date">GRADUATED JAN 2024</span></div><div class="credential-card"><span class="credential-label">CERTIFICATIONS</span><h3>Industry credentials</h3><p>Tenable Certified MSSP Practitioner · Tenable Certified Sales Engineer (TCSE-VM) · Tenable Certified Sales Associate (TCSA-VM) · Fortinet NSE 1, 2 &amp; 3</p></div></div></div></section>
+          <article class="info-card tilt-card" data-reveal="up" data-delay="80">
+            <span class="card-no">02</span>
+            <h3>Detection engineering</h3>
+            <p>I’ve written and tuned YARA and SIGMA detections, mapped activity to MITRE ATT&amp;CK, and improved detection quality in collaboration with teams.</p>
+            <div class="tag-list"><span>YARA</span><span>SIGMA</span><span>MITRE ATT&amp;CK</span></div>
+          </article>
 
-    <section class="section section-contact" id="contact"><div class="shell contact-shell"><div><span class="section-index">07 / CONTACT</span><h2>Let's build something<br><span class="gradient-text">more secure.</span></h2><p>Open to UK SOC Analyst, cybersecurity placement and security engineering opportunities, alongside collaboration on practical defence projects.</p><a class="contact-email" href="mailto:poudelnirmal7777@gmail.com">poudelnirmal7777@gmail.com <span aria-hidden="true">↗</span></a></div><div class="contact-panel"><div class="contact-panel-head"><span class="live-dot"></span> CONNECTION READY</div><p>Interested in working together?<br>I'd be happy to hear from you.</p><a class="button button-primary" href="mailto:poudelnirmal7777@gmail.com?subject=Hello%20Nirmal%20%E2%80%94%20from%20your%20portfolio">Send an email <span aria-hidden="true">↗</span></a><div class="contact-panel-links"><a href="https://www.linkedin.com/in/nirmal-poudel/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/nirmal7-np" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></div></section>
+          <article class="info-card tilt-card" data-reveal="up" data-delay="140">
+            <span class="card-no">03</span>
+            <h3>Incident response</h3>
+            <p>I’ve investigated phishing, BEC, malware and unauthorised access incidents, documented findings, and supported containment and handover.</p>
+            <div class="tag-list"><span>Phishing</span><span>BEC</span><span>Malware</span><span>IR workflows</span></div>
+          </article>
+
+          <article class="info-card tilt-card" data-reveal="up" data-delay="200">
+            <span class="card-no">04</span>
+            <h3>Vulnerability management</h3>
+            <p>I’ve used Tenable.io and Nessus Professional to identify, assess and prioritise vulnerabilities, then worked with teams on remediation.</p>
+            <div class="tag-list"><span>Tenable.io</span><span>Nessus</span><span>CVE / CVSS</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="shell">
+        <div class="section-heading" data-reveal="up">
+          <div>
+            <span class="section-index">03 / EXPERIENCE</span>
+            <h2>Where I’ve worked.</h2>
+          </div>
+          <p>
+            A quick look at the roles that shaped my current cybersecurity skill set.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item" data-reveal="up">
+            <div class="timeline-date">Apr 2025 — Sep 2025</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-top">
+                <div>
+                  <h3>SOC Engineer</h3>
+                  <p class="company">Cyber Alert Nepal · Remote</p>
+                </div>
+                <span class="role-type">engineering</span>
+              </div>
+              <p>
+                I helped deploy and integrate an end-to-end open-source SOC stack using <strong>Wazuh</strong>, <strong>Shuffle</strong>, <strong>TheHive</strong> and <strong>Cortex</strong>. I also worked on ATT&amp;CK-aligned detections, SOAR playbooks, IOC-driven hunts and internal runbooks.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal="up" data-delay="100">
+            <div class="timeline-date">Oct 2022 — Mar 2025</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-top">
+                <div>
+                  <h3>Security Analyst (SOC)</h3>
+                  <p class="company">CryptoGen Nepal · Kathmandu, Nepal</p>
+                </div>
+                <span class="role-type">operations</span>
+              </div>
+              <p>
+                This is where I spent most of my time on real monitoring and investigation work: Tier 1 / Tier 2 triage, phishing and malware cases, YARA/SIGMA detections, platform integrations, and vulnerability assessment support across MSSP clients.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal="up" data-delay="180">
+            <div class="timeline-date">May 2022 — Jun 2022</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-top">
+                <div>
+                  <h3>Endpoint Protection Browser Tester</h3>
+                  <p class="company">Vairav Technology · Kathmandu, Nepal</p>
+                </div>
+                <span class="role-type">contract</span>
+              </div>
+              <p>
+                I tested browser resilience against phishing sites and malware samples, then documented reproducible findings for the engineering team.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="work">
+      <div class="shell">
+        <div class="section-heading" data-reveal="up">
+          <div>
+            <span class="section-index">04 / SELECTED WORK</span>
+            <h2>What that experience looks like in practice.</h2>
+          </div>
+          <p>
+            These are not made-up projects. They are based on the kind of work I’ve actually done.
+          </p>
+        </div>
+
+        <div class="case-grid">
+          <article class="case-card tilt-card" data-reveal="up">
+            <div class="case-top">
+              <span class="case-label">SOC Integration</span>
+              <span class="case-icon">◉</span>
+            </div>
+            <h3>Building a connected SOC workflow</h3>
+            <p>
+              At Cyber Alert Nepal, I worked on an open-source stack that connected SIEM, case management, orchestration and threat-intelligence tooling.
+            </p>
+            <ul>
+              <li>Integrated Wazuh, Shuffle, TheHive and Cortex</li>
+              <li>Helped automate enrichment and investigation handoff</li>
+              <li>Documented workflows so other analysts could use them consistently</li>
+            </ul>
+          </article>
+
+          <article class="case-card tilt-card" data-reveal="up" data-delay="90">
+            <div class="case-top">
+              <span class="case-label">SOC Operations</span>
+              <span class="case-icon">⌁</span>
+            </div>
+            <h3>Investigating what matters</h3>
+            <p>
+              At CryptoGen Nepal, I handled live monitoring and investigation work for multiple clients in an MSSP setting.
+            </p>
+            <ul>
+              <li>Worked across Tier 1 and Tier 2 alert handling</li>
+              <li>Investigated phishing, malware, BEC and unauthorised access</li>
+              <li>Wrote clear incident notes and escalation details</li>
+            </ul>
+          </article>
+
+          <article class="case-card tilt-card" data-reveal="up" data-delay="160">
+            <div class="case-top">
+              <span class="case-label">Detection & Risk</span>
+              <span class="case-icon">⬡</span>
+            </div>
+            <h3>Improving visibility and reducing risk</h3>
+            <p>
+              A big part of my work has been about improving signal quality and helping teams focus on the right issues.
+            </p>
+            <ul>
+              <li>Created and tuned YARA / SIGMA rules</li>
+              <li>Integrated log sources into SIEM platforms</li>
+              <li>Used Tenable.io and Nessus for vulnerability assessment and prioritisation</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="repo-callout" data-reveal="up">
+          <div>
+            <span class="section-index">PUBLIC REPOSITORIES</span>
+            <h3>Want to see my public work?</h3>
+            <p>
+              You can browse my GitHub for labs, experiments and security-related work. Private client environments and sensitive investigation data are not published.
+            </p>
+          </div>
+          <a class="button button-secondary" href="https://github.com/nirmal7-np?tab=repositories" target="_blank" rel="noopener noreferrer">Open GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="shell">
+        <div class="section-heading" data-reveal="up">
+          <div>
+            <span class="section-index">05 / HOW I WORK</span>
+            <h2>My usual investigation flow.</h2>
+          </div>
+          <p>
+            Simple in structure, but important in day-to-day security work.
+          </p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card" data-reveal="up">
+            <span class="step">01</span>
+            <h3>Review the alert</h3>
+            <p>I start by checking the source, severity, affected system and whether the signal looks meaningful or noisy.</p>
+          </article>
+          <article class="process-card" data-reveal="up" data-delay="60">
+            <span class="step">02</span>
+            <h3>Build context</h3>
+            <p>I correlate logs, examine indicators, review timelines and map behaviour to known techniques where useful.</p>
+          </article>
+          <article class="process-card" data-reveal="up" data-delay="120">
+            <span class="step">03</span>
+            <h3>Respond clearly</h3>
+            <p>I document findings in a way that other analysts, engineers or stakeholders can act on without confusion.</p>
+          </article>
+          <article class="process-card" data-reveal="up" data-delay="180">
+            <span class="step">04</span>
+            <h3>Improve the workflow</h3>
+            <p>If something can be detected faster or handled better next time, I want to improve that part of the process.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="toolkit">
+      <div class="shell">
+        <div class="section-heading" data-reveal="up">
+          <div>
+            <span class="section-index">06 / TOOLKIT</span>
+            <h2>Tools I’ve worked with.</h2>
+          </div>
+          <p>
+            Grouped around the work they support.
+          </p>
+        </div>
+
+        <div class="tool-columns">
+          <div class="tool-card" data-reveal="up">
+            <h3>SIEM & log analysis</h3>
+            <div class="tag-list dense"><span>Wazuh</span><span>FortiSIEM</span><span>Logpoint</span><span>ELK Stack</span><span>FortiAnalyzer</span></div>
+          </div>
+          <div class="tool-card" data-reveal="up" data-delay="70">
+            <h3>Response & orchestration</h3>
+            <div class="tag-list dense"><span>Shuffle</span><span>TheHive</span><span>Cortex</span><span>FortiSOAR</span><span>Playbook automation</span></div>
+          </div>
+          <div class="tool-card" data-reveal="up" data-delay="140">
+            <h3>Detection & threat work</h3>
+            <div class="tag-list dense"><span>YARA</span><span>SIGMA</span><span>MITRE ATT&amp;CK</span><span>IOC / IOA analysis</span><span>Threat hunting</span></div>
+          </div>
+          <div class="tool-card" data-reveal="up" data-delay="210">
+            <h3>Vulnerability & scripting</h3>
+            <div class="tag-list dense"><span>Tenable.io</span><span>Nessus</span><span>Python</span><span>Bash</span><span>Docker</span><span>Linux</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="credentials">
+      <div class="shell credentials-grid">
+        <div data-reveal="up">
+          <span class="section-index">07 / EDUCATION & CERTIFICATIONS</span>
+          <h2>The academic and certification side.</h2>
+          <p class="credential-intro">
+            Formal education gave me the foundation. Real SOC work made it practical.
+          </p>
+        </div>
+
+        <div class="credential-cards">
+          <article class="credential-card" data-reveal="up" data-delay="70">
+            <span class="credential-label">CURRENT STUDY</span>
+            <h3>MSc Cybersecurity with Placement Year</h3>
+            <p>University of Hertfordshire · United Kingdom</p>
+            <span class="credential-date">Jan 2026 — Jan 2028 (in progress)</span>
+          </article>
+
+          <article class="credential-card" data-reveal="up" data-delay="120">
+            <span class="credential-label">DEGREE</span>
+            <h3>BSc (Hons) Computer Networking and IT Security</h3>
+            <p>Islington College · Awarded by London Metropolitan University</p>
+            <span class="credential-date">Graduated Jan 2024</span>
+          </article>
+
+          <article class="credential-card" data-reveal="up" data-delay="170">
+            <span class="credential-label">CERTIFICATIONS</span>
+            <h3>Industry certifications</h3>
+            <p>Tenable Certified MSSP Practitioner · Tenable Certified Sales Engineer (TCSE-VM) · Tenable Certified Sales Associate (TCSA-VM) · Fortinet NSE 1, NSE 2 and NSE 3</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-contact" id="contact">
+      <div class="shell contact-shell">
+        <div data-reveal="up">
+          <span class="section-index">08 / CONTACT</span>
+          <h2>Let’s talk.</h2>
+          <p>
+            I’m open to SOC Analyst, cybersecurity placement and junior security engineering opportunities in the UK.
+          </p>
+          <a class="contact-email" href="mailto:poudelnirmal7777@gmail.com">poudelnirmal7777@gmail.com <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <div class="contact-panel tilt-card" data-reveal="up" data-delay="100">
+          <div class="contact-panel-head"><span class="live-dot"></span> Available for conversations</div>
+          <p>
+            If you’re hiring for blue-team security roles, placements, or projects where practical SOC experience matters, feel free to reach out.
+          </p>
+          <div class="contact-panel-links">
+            <a class="button button-primary" href="mailto:poudelnirmal7777@gmail.com?subject=Hello%20Nirmal">Send email <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/nirmal-poudel/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href="https://github.com/nirmal7-np" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
-  <footer class="footer"><div class="shell footer-inner"><a class="brand" href="#top"><span class="brand-mark">N<span class="brand-dot">.</span></span></a><span>© <span id="year">2026</span> NIRMAL POUDEL. BUILT WITH PURPOSE.</span><a href="#top">BACK TO TOP ↑</a></div></footer>
+
+  <footer class="footer">
+    <div class="shell footer-inner">
+      <a class="brand small" href="#top"><span class="brand-mark">N<span class="brand-dot">.</span></span></a>
+      <span>© <span id="year">2026</span> Nirmal Poudel. Built with HTML, CSS and JavaScript.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
 </body>
 </html>
