@@ -99,7 +99,7 @@ canvas#bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;opacit
 .credentials-grid{display:grid;grid-template-columns:.42fr .58fr;gap:30px}.credential-cards{grid-template-columns:1fr}.credential-card{position:relative;padding:22px}.credential-label{display:inline-block;font:600 10px/1.5 var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px}.credential-date{display:block;margin-top:12px;font:600 11px/1.5 var(--font-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .section-contact{padding-top:86px}.contact-shell{display:grid;grid-template-columns:.48fr .52fr;gap:24px;align-items:start}.contact-email{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:clamp(20px,3vw,30px);letter-spacing:-.03em;margin-top:12px}.contact-panel{position:relative;padding:24px}.contact-panel-head{display:inline-flex;align-items:center;gap:9px;padding:8px 11px;border-radius:999px;background:rgba(102,242,196,.08);border:1px solid rgba(102,242,196,.14);font:600 11px/1 var(--font-mono);text-transform:uppercase;color:var(--accent)}.contact-panel-links{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:18px}
 .footer{padding:22px 0 38px;border-top:1px solid rgba(255,255,255,.06)}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:14px}
-[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .65s ease, transform .65s ease}.reveal-in{opacity:1;transform:none}
+[data-reveal]{opacity:1;transform:none}.reveal-in{opacity:1;transform:none}
 .tilt-card{transform-style:preserve-3d;will-change:transform}.tilt-card:hover{border-color:rgba(102,242,196,.2)}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(102,242,196,.65)}70%{box-shadow:0 0 0 11px rgba(102,242,196,0)}100%{box-shadow:0 0 0 0 rgba(102,242,196,0)}}
 @keyframes blink{50%{opacity:0}}
@@ -169,224 +169,7 @@ html,body{max-width:100%;}
 }
 
 </style>
-  <script defer>
-(() => {
-  const doc = document;
-  const menuButton = doc.getElementById('menu-toggle');
-  const navigation = doc.getElementById('site-nav');
-  const year = doc.getElementById('year');
-  if (year) year.textContent = String(new Date().getFullYear());
-
-  if (menuButton && navigation) {
-    menuButton.addEventListener('click', () => {
-      const isOpen = navigation.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
-    });
-    navigation.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navigation.classList.remove('open');
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-label', 'Open navigation');
-      });
-    });
-  }
-
-  // Active nav links
-  const sections = [...doc.querySelectorAll('main section[id]')];
-  const navLinks = [...doc.querySelectorAll('.site-nav a')];
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const id = entry.target.id;
-      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${id}`));
-    });
-  }, { threshold: 0.45 });
-  sections.forEach(section => sectionObserver.observe(section));
-
-  // Scroll reveal
-  const revealEls = doc.querySelectorAll('[data-reveal]');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const delay = entry.target.dataset.delay ? Number(entry.target.dataset.delay) : 0;
-      setTimeout(() => entry.target.classList.add('reveal-in'), delay);
-      revealObserver.unobserve(entry.target);
-    });
-  }, { threshold: 0.12 });
-  revealEls.forEach(el => revealObserver.observe(el));
-
-  // Counter animation
-  const countEls = doc.querySelectorAll('.count');
-  const countObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = Number(el.dataset.count || 0);
-      const duration = 1200;
-      const start = performance.now();
-      const step = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = String(Math.floor(target * eased));
-        if (progress < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-      countObserver.unobserve(el);
-    });
-  }, { threshold: 0.8 });
-  countEls.forEach(el => countObserver.observe(el));
-
-  // Typing effect
-  const typingTarget = doc.getElementById('typing-text');
-  const phrases = [
-    'SIEM monitoring and alert triage',
-    'phishing, malware and BEC investigations',
-    'YARA / SIGMA detection work',
-    'SOC integration and workflow automation',
-    'vulnerability management and remediation support'
-  ];
-  if (typingTarget) {
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let deleting = false;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reducedMotion) {
-      typingTarget.textContent = phrases[0];
-    } else {
-      const tick = () => {
-        const current = phrases[phraseIndex];
-        if (!deleting) {
-          charIndex++;
-          typingTarget.textContent = current.slice(0, charIndex);
-          if (charIndex === current.length) {
-            deleting = true;
-            return setTimeout(tick, 1500);
-          }
-          setTimeout(tick, 42);
-        } else {
-          charIndex--;
-          typingTarget.textContent = current.slice(0, charIndex);
-          if (charIndex === 0) {
-            deleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            return setTimeout(tick, 240);
-          }
-          setTimeout(tick, 24);
-        }
-      };
-      tick();
-    }
-  }
-
-  // Tilt cards
-  const tiltCards = doc.querySelectorAll('.tilt-card');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reducedMotion) {
-    tiltCards.forEach(card => {
-      let rafId;
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width;
-        const py = (e.clientY - rect.top) / rect.height;
-        cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => {
-          const rx = (0.5 - py) * 6;
-          const ry = (px - 0.5) * 8;
-          card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
-        });
-      });
-      card.addEventListener('mouseleave', () => {
-        cancelAnimationFrame(rafId);
-        card.style.transform = '';
-      });
-    });
-  }
-
-  // Canvas background
-  const canvas = doc.getElementById('bg-canvas');
-  if (canvas && canvas.getContext && !reducedMotion) {
-    const ctx = canvas.getContext('2d');
-    let w = 0;
-    let h = 0;
-    let particles = [];
-    const mouse = { x: null, y: null, active: false };
-
-    let animationFrame = null;
-    const resize = () => {
-      w = canvas.width = window.innerWidth * Math.min(window.devicePixelRatio || 1, 2);
-      h = canvas.height = window.innerHeight * Math.min(window.devicePixelRatio || 1, 2);
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
-      particles = Array.from({ length: Math.min(window.innerWidth < 720 ? 24 : 64, Math.floor(window.innerWidth / 28)) }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.8 + 0.8
-      }));
-    };
-
-    const draw = () => {
-      ctx.clearRect(0, 0, w, h);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(132, 205, 255, 0.55)';
-        ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const dx = p.x - q.x;
-          const dy = p.y - q.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 130) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(102, 242, 196, ${0.11 * (1 - dist / 130)})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
-
-        if (mouse.active && mouse.x !== null) {
-          const dx = p.x - mouse.x;
-          const dy = p.y - mouse.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 150) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(99, 180, 255, ${0.16 * (1 - dist / 150)})`;
-            ctx.stroke();
-          }
-        }
-      }
-      if (!document.hidden) animationFrame = requestAnimationFrame(draw);
-    };
-
-    window.addEventListener('mousemove', (e) => {
-      const ratio = Math.min(window.devicePixelRatio || 1, 2);
-      mouse.x = e.clientX * ratio;
-      mouse.y = e.clientY * ratio;
-      mouse.active = true;
-    });
-    window.addEventListener('mouseleave', () => { mouse.active = false; });
-    window.addEventListener('resize', resize);
-    document.addEventListener('visibilitychange', () => { if (!document.hidden) { cancelAnimationFrame(animationFrame); draw(); } });
-    resize();
-    draw();
-  }
-})();
-
-</script>
+  
   <title>Nirmal Poudel | SOC Analyst & Security Engineer</title>
 </head>
 <body>
@@ -845,5 +628,228 @@ html,body{max-width:100%;}
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
+<script>
+(() => {
+  const doc = document;
+  const menuButton = doc.getElementById('menu-toggle');
+  const navigation = doc.getElementById('site-nav');
+  const year = doc.getElementById('year');
+  if (year) year.textContent = String(new Date().getFullYear());
+
+  if (menuButton && navigation) {
+    menuButton.addEventListener('click', () => {
+      const isOpen = navigation.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+    });
+    navigation.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navigation.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation');
+      });
+    });
+  }
+
+  // Active nav links
+  const sections = [...doc.querySelectorAll('main section[id]')];
+  const navLinks = [...doc.querySelectorAll('.site-nav a')];
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const id = entry.target.id;
+      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${id}`));
+    });
+  }, { threshold: 0.45 });
+  sections.forEach(section => sectionObserver.observe(section));
+
+  // Scroll reveal
+  const revealEls = doc.querySelectorAll('[data-reveal]');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const delay = entry.target.dataset.delay ? Number(entry.target.dataset.delay) : 0;
+      setTimeout(() => {
+        entry.target.classList.add('reveal-in');
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && entry.target.animate) {
+          entry.target.animate([{opacity:0.65,transform:'translateY(15px)'},{opacity:1,transform:'translateY(0)'}],{duration:560,easing:'ease-out'});
+        }
+      }, delay);
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Counter animation
+  const countEls = doc.querySelectorAll('.count');
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = Number(el.dataset.count || 0);
+      const duration = 1200;
+      const start = performance.now();
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = String(Math.floor(target * eased));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0.8 });
+  countEls.forEach(el => countObserver.observe(el));
+
+  // Typing effect
+  const typingTarget = doc.getElementById('typing-text');
+  const phrases = [
+    'SIEM monitoring and alert triage',
+    'phishing, malware and BEC investigations',
+    'YARA / SIGMA detection work',
+    'SOC integration and workflow automation',
+    'vulnerability management and remediation support'
+  ];
+  if (typingTarget) {
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) {
+      typingTarget.textContent = phrases[0];
+    } else {
+      const tick = () => {
+        const current = phrases[phraseIndex];
+        if (!deleting) {
+          charIndex++;
+          typingTarget.textContent = current.slice(0, charIndex);
+          if (charIndex === current.length) {
+            deleting = true;
+            return setTimeout(tick, 1500);
+          }
+          setTimeout(tick, 42);
+        } else {
+          charIndex--;
+          typingTarget.textContent = current.slice(0, charIndex);
+          if (charIndex === 0) {
+            deleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            return setTimeout(tick, 240);
+          }
+          setTimeout(tick, 24);
+        }
+      };
+      tick();
+    }
+  }
+
+  // Tilt cards
+  const tiltCards = doc.querySelectorAll('.tilt-card');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reducedMotion) {
+    tiltCards.forEach(card => {
+      let rafId;
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width;
+        const py = (e.clientY - rect.top) / rect.height;
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          const rx = (0.5 - py) * 6;
+          const ry = (px - 0.5) * 8;
+          card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+        });
+      });
+      card.addEventListener('mouseleave', () => {
+        cancelAnimationFrame(rafId);
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // Canvas background
+  const canvas = doc.getElementById('bg-canvas');
+  if (canvas && canvas.getContext && !reducedMotion) {
+    const ctx = canvas.getContext('2d');
+    let w = 0;
+    let h = 0;
+    let particles = [];
+    const mouse = { x: null, y: null, active: false };
+
+    let animationFrame = null;
+    const resize = () => {
+      w = canvas.width = window.innerWidth * Math.min(window.devicePixelRatio || 1, 2);
+      h = canvas.height = window.innerHeight * Math.min(window.devicePixelRatio || 1, 2);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      particles = Array.from({ length: Math.min(window.innerWidth < 720 ? 24 : 64, Math.floor(window.innerWidth / 28)) }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.8 + 0.8
+      }));
+    };
+
+    const draw = () => {
+      ctx.clearRect(0, 0, w, h);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(132, 205, 255, 0.55)';
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 130) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(102, 242, 196, ${0.11 * (1 - dist / 130)})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+
+        if (mouse.active && mouse.x !== null) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(99, 180, 255, ${0.16 * (1 - dist / 150)})`;
+            ctx.stroke();
+          }
+        }
+      }
+      if (!document.hidden) animationFrame = requestAnimationFrame(draw);
+    };
+
+    window.addEventListener('mousemove', (e) => {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      mouse.x = e.clientX * ratio;
+      mouse.y = e.clientY * ratio;
+      mouse.active = true;
+    });
+    window.addEventListener('mouseleave', () => { mouse.active = false; });
+    window.addEventListener('resize', resize);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) { cancelAnimationFrame(animationFrame); draw(); } });
+    resize();
+    draw();
+  }
+})();
+
+</script>
 </body>
 </html>
