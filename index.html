@@ -1,117 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <button id="mode-toggle">🌙</button>
-    <title>Nirmal Poudel - Portfolio</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <script defer src="scripts/script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080e18" />
+  <meta name="description" content="Nirmal Poudel — London-based SOC Analyst and Security Engineer. Security monitoring, incident response, detection engineering, and SOC automation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nirmal Poudel | SOC Analyst & Security Engineer" />
+  <meta property="og:description" content="Building better detection. Investigating real threats. Engineering resilient security operations." />
+  <meta property="og:url" content="https://poudelnirmal.com.np/" />
+  <link rel="canonical" href="https://poudelnirmal.com.np/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <script defer src="scripts/main.js"></script>
+  <title>Nirmal Poudel — Cybersecurity / SOC Engineering</title>
 </head>
 <body>
-    <header>
-        <h1>Nirmal Poudel</h1>
-        <p>Cybersecurity Professional | SOC Analyst | Security Engineer</p>
-        <nav>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>            
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="site-noise" aria-hidden="true"></div>
+  <header class="topbar" id="top">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="Nirmal Poudel, back to top"><span class="brand-mark">N<span class="brand-dot">.</span></span><span class="brand-word">NIRMAL<span class="muted"> / SECURITY</span></span></a>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation"><a href="#about">About</a><a href="#expertise">Expertise</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
+      <div class="nav-actions"><button class="theme-button" id="theme-toggle" aria-label="Switch theme" title="Switch theme"><span aria-hidden="true">◐</span></button><a class="nav-cta" href="mailto:poudelnirmal7777@gmail.com">Let's connect <span aria-hidden="true">↗</span></a><button class="menu-button" id="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button></div>
+    </div>
+  </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I’m Nirmal Poudel, a passionate cybersecurity professional specializing in SOC operations, vulnerability management, and incident response. With hands-on experience in SOC operations, vulnerability management, and incident response, I’ve worked with a range of security tools and technologies to identify and mitigate evolving threats. Always eager to learn and share knowledge, I aim to contribute to a safer digital world through my work and projects.</p>
+  <main id="main">
+    <section class="hero shell" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> LONDON, UNITED KINGDOM <span class="eyebrow-sep">/</span> CYBERSECURITY PROFESSIONAL</div>
+        <p class="hero-kicker">HELLO, I'M NIRMAL POUDEL <span aria-hidden="true">↘</span></p>
+        <h1 id="hero-heading">Securing systems.<br><span class="outline">Hunting threats.</span><br><span class="gradient-text">Building resilience.</span></h1>
+        <p class="hero-intro">SOC Analyst & Security Engineer with <strong>3 years of hands-on experience</strong> in incident response, detection engineering, vulnerability management and security operations. I turn security signals into actionable defence.</p>
+        <div class="hero-buttons"><a href="#work" class="button button-primary">Explore my work <span aria-hidden="true">↗</span></a><a href="#contact" class="button button-secondary">Get in touch <span aria-hidden="true">↗</span></a></div>
+        <div class="social-links"><a href="https://github.com/nirmal7-np" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/nirmal-poudel/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a><a href="mailto:poudelnirmal7777@gmail.com">EMAIL ↗</a></div>
+      </div>
+      <div class="hero-visual" aria-label="Decorative security operations display">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="terminal-window"><div class="terminal-head"><span class="terminal-dots"><i></i><i></i><i></i></span><span>security_ops / overview</span><span class="terminal-head-right">● LIVE</span></div><div class="terminal-content"><div class="terminal-line"><span class="line-num">01</span><span class="code-comment">// PROFILE STATUS</span></div><div class="terminal-line"><span class="line-num">02</span><span><span class="code-purple">const</span> analyst = {</span></div><div class="terminal-line"><span class="line-num">03</span><span>&nbsp; name: <span class="code-green">"Nirmal Poudel"</span>,</span></div><div class="terminal-line"><span class="line-num">04</span><span>&nbsp; focus: <span class="code-green">"SOC & Detection"</span>,</span></div><div class="terminal-line"><span class="line-num">05</span><span>&nbsp; location: <span class="code-green">"London, UK"</span>,</span></div><div class="terminal-line"><span class="line-num">06</span><span>&nbsp; experience: <span class="code-orange">"3+ years"</span>,</span></div><div class="terminal-line"><span class="line-num">07</span><span>&nbsp; mindset: <span class="code-green">"Defend. Detect. Respond."</span></span></div><div class="terminal-line"><span class="line-num">08</span><span>};</span></div><div class="terminal-separator"></div><div class="terminal-status"><span><span class="live-dot"></span> SYSTEM STATUS</span><strong>OPERATIONAL</strong></div><div class="signal-bars" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="terminal-foot">&gt; always_learning<span class="cursor">_</span></div></div></div>
+        <div class="floating-tag floating-tag-top"><span class="tag-icon">⌘</span><span>DETECTION<br><strong>ENGINEERING</strong></span></div><div class="floating-tag floating-tag-bottom"><span class="tag-icon">◎</span><span>THREAT<br><strong>INTELLIGENCE</strong></span></div>
+      </div>
+      <div class="hero-bottom"><div><span class="stat-number">03<span>+</span></span><span class="stat-label">YEARS IN CYBERSECURITY</span></div><div><span class="stat-number">24<span>/7</span></span><span class="stat-label">SOC OPERATIONS EXPOSURE</span></div><div><span class="stat-number">L1<span> / </span>L2</span><span class="stat-label">ALERT TRIAGE & RESPONSE</span></div><a class="scroll-prompt" href="#about">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
     </section>
 
-    <section id="experience">
-        <h2>Work Experience</h2>
-        <div class="job">
-            <h3>Security Analyst</h3>
-            <p><strong>CryptoGen Nepal</strong> | October 2022 - Present</p>
-            <ul>
-                <li>Managed vulnerability assessments using Nessus and Tenable.io.</li>
-                <li>Developed YARA and SIGMA rules for threat detection.</li>
-                <li>Monitored security incidents and responded to threats.</li>
-            </ul>
-        </div>
+    <section class="section section-about" id="about"><div class="shell section-grid"><div class="section-side"><span class="section-index">01 / ABOUT</span><h2>Behind the<br><span class="gradient-text">terminal.</span></h2></div><div class="about-main"><p class="lead">I help organisations make sense of complex security signals—and respond with confidence.</p><p>I'm a cybersecurity professional currently pursuing an <strong>MSc in Cybersecurity with Placement Year at the University of Hertfordshire</strong>. My professional experience spans managed security services, enterprise monitoring, threat hunting and the design and integration of security operations environments.</p><p>I've worked across the full detection lifecycle: onboarding log sources, developing detection rules, triaging alerts, investigating incidents, and supporting remediation. I enjoy combining practical SOC operations with engineering and automation to make defenders more effective.</p><div class="about-chips"><span>Threat-driven mindset</span><span>Hands-on engineering</span><span>Always learning</span></div></div></div></section>
 
-        <div class="job">
-            <h3>Endpoint Protection Browser Tester</h3>
-            <p><strong>Vairav Technology</strong> | May 2022 - June 2022</p>
-            <ul>
-                <li>Tested browser security against phishing and malware attacks.</li>
-            </ul>
-        </div>
-    </section>
+    <section class="section section-expertise" id="expertise"><div class="shell"><div class="section-heading"><div><span class="section-index">02 / CAPABILITIES</span><h2>What I <span class="gradient-text">do best.</span></h2></div><p>Practical skills built in live security operations and engineering environments.</p></div><div class="expertise-grid"><article class="expertise-card"><span class="card-number">01</span><div class="card-symbol">◉</div><h3>Security monitoring & SIEM</h3><p>Log ingestion, correlation, alert triage, use-case engineering, tuning and investigation workflows.</p><div class="tag-list"><span>Wazuh</span><span>FortiSIEM</span><span>Logpoint</span><span>ELK</span></div></article><article class="expertise-card"><span class="card-number">02</span><div class="card-symbol">⌁</div><h3>Threat detection & hunting</h3><p>IOC analysis, adversary TTP mapping, behaviour-based detections and custom detection content.</p><div class="tag-list"><span>MITRE ATT&CK</span><span>YARA</span><span>SIGMA</span></div></article><article class="expertise-card"><span class="card-number">03</span><div class="card-symbol">↳</div><h3>Incident response & SOAR</h3><p>Tier 1/2 investigations, phishing and malware response, automated enrichment and case management.</p><div class="tag-list"><span>TheHive</span><span>Cortex</span><span>Shuffle</span><span>FortiSOAR</span></div></article><article class="expertise-card"><span class="card-number">04</span><div class="card-symbol">⬡</div><h3>Vulnerability management</h3><p>Risk-based assessments, CVSS prioritisation, findings reporting and remediation tracking.</p><div class="tag-list"><span>Tenable.io</span><span>Nessus</span><span>CVE/CVSS</span></div></article></div><div class="tool-strip"><span>ALSO WORKING WITH</span><p>Python <i>✳</i> Bash <i>✳</i> Docker <i>✳</i> Linux <i>✳</i> Windows Server <i>✳</i> Active Directory <i>✳</i> NIST CSF</p></div></div></section>
 
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <ul>
-            <li>SIEM Tools: Wazuh, FortiSIEM, Logpoint</li>
-            <li>Incident Response & Threat Hunting</li>
-            <li>Programming: Bash, Python (Basic)</li>
-            <li>Security Tools: Tenable IO, Nessus</li>
-            <li>Containerization: Docker</li>
-        </ul>
-    </section>
+    <section class="section" id="experience"><div class="shell"><div class="section-heading"><div><span class="section-index">03 / EXPERIENCE</span><h2>My <span class="gradient-text">journey.</span></h2></div><p>From operational response to engineering and integrating security solutions.</p></div><div class="timeline"><article class="timeline-item"><div class="timeline-date">APR 2025 — SEP 2025</div><div class="timeline-track"><span></span></div><div class="timeline-body"><div class="timeline-header"><div><h3>SOC Engineer</h3><p class="company">Cyber Alert Nepal <span>· Remote</span></p></div><span class="role-type">ENGINEERING</span></div><p>Built and integrated an open-source SOC environment using Wazuh, Shuffle, TheHive and Cortex; developed MITRE ATT&CK-aligned detection content and automated investigation workflows.</p><div class="tag-list"><span>SOC Architecture</span><span>Detection Engineering</span><span>SOAR</span></div></div></article><article class="timeline-item"><div class="timeline-date">OCT 2022 — MAR 2025</div><div class="timeline-track"><span></span></div><div class="timeline-body"><div class="timeline-header"><div><h3>Security Analyst (SOC)</h3><p class="company">CryptoGen Nepal <span>· Kathmandu, Nepal</span></p></div><span class="role-type">OPERATIONS</span></div><p>Conducted Tier 1/2 monitoring for multiple MSSP clients. Investigated phishing, BEC, malware and unauthorised access; authored YARA/SIGMA rules, integrated security platforms and supported vulnerability remediation.</p><div class="tag-list"><span>Incident Response</span><span>Threat Hunting</span><span>SIEM</span><span>Vulnerability Management</span></div></div></article><article class="timeline-item"><div class="timeline-date">MAY 2022 — JUN 2022</div><div class="timeline-track"><span></span></div><div class="timeline-body"><div class="timeline-header"><div><h3>Endpoint Protection Browser Tester</h3><p class="company">Vairav Technology <span>· Kathmandu, Nepal</span></p></div><span class="role-type">CONTRACT</span></div><p>Assessed browser protection against phishing websites and malware samples, documenting repeatable test results for engineering teams.</p><div class="tag-list"><span>Endpoint Security</span><span>Security Testing</span></div></div></article></div></div></section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Security Event Management</h3>
-            <p>Developed a SIEM platform using the ELK stack and Wazuh for enhanced security monitoring and incident response.</p>
-        </div>
-    </section>
+    <section class="section section-work" id="work"><div class="shell"><div class="section-heading"><div><span class="section-index">04 / SELECTED WORK</span><h2>Inside the <span class="gradient-text">lab.</span></h2></div><p>Technical focus areas and public repositories. Client environments and sensitive incident details remain private.</p></div><div class="work-grid"><article class="work-card featured"><div class="work-visual"><div class="workflow"><div class="workflow-node">LOG SOURCES</div><div class="workflow-connector">→</div><div class="workflow-node active">WAZUH / SIEM</div><div class="workflow-connector">→</div><div class="workflow-node">SOAR / CASES</div></div><div class="work-grid-pattern"></div><span class="work-visual-label">SECURITY OPERATIONS / WORKFLOW</span></div><div class="work-content"><div class="work-meta"><span>01 / ENGINEERING</span><span>PROFESSIONAL EXPERIENCE</span></div><h3>Integrated SOC workflows</h3><p>Experience deploying SIEM, case management and SOAR components to improve alert enrichment, triage and incident response handoffs.</p><div class="tag-list"><span>Wazuh</span><span>Shuffle</span><span>TheHive</span><span>Cortex</span></div></div></article><article class="work-card"><div class="work-visual compact-visual"><div class="code-graphic"><span>rule detection_example {</span><span>&nbsp; condition:</span><span class="code-green">&nbsp;&nbsp; $suspicious_activity</span><span>}</span></div><span class="work-visual-label">DETECTION / RULES</span></div><div class="work-content"><div class="work-meta"><span>02 / DETECTION</span><span>PROFESSIONAL EXPERIENCE</span></div><h3>Detection engineering</h3><p>Custom YARA and SIGMA rules, adversary mapping and tuning detections to reduce false positives.</p><div class="tag-list"><span>YARA</span><span>SIGMA</span><span>ATT&CK</span></div></div></article><article class="work-card"><div class="work-visual compact-visual vuln-visual"><div class="vuln-rings"><span></span><span></span><span></span><strong>CVSS</strong></div><span class="work-visual-label">ASSESS / PRIORITISE / REMEDIATE</span></div><div class="work-content"><div class="work-meta"><span>03 / VULNERABILITY</span><span>PROFESSIONAL EXPERIENCE</span></div><h3>Risk-based assessments</h3><p>Vulnerability discovery, impact assessment, prioritisation and remediation support across client environments.</p><div class="tag-list"><span>Tenable.io</span><span>Nessus</span><span>CVSS</span></div></div></article></div><div class="repo-callout"><div><span class="section-index">OPEN SOURCE / PUBLIC CODE</span><h3>Curious about what I'm building?</h3><p>Explore my GitHub repositories for code, experiments and security-related work.</p></div><a class="button button-secondary" href="https://github.com/nirmal7-np?tab=repositories" target="_blank" rel="noopener noreferrer">Browse GitHub <span aria-hidden="true">↗</span></a></div></div></section>
 
-    <section id="blog">
-        <h2>Blog</h2>
-        <article>
-            <h3>Threat Intelligence and its Role in SOC</h3>
-            <p>Threat Intelligence is a process of collecting, analyzing, and disseminating information about current and emerging threats to an organization's security. In a Security Operations Center (SOC), threat intelligence plays a crucial role in proactively identifying and mitigating potential risks.</p>
-            <p>For a comprehensive understanding, read the full article on Medium: <a href="https://medium.com/@nirmal.poudel7/threat-intelligence-and-its-role-in-soc-508f97d2f6b4" target="_blank">Threat Intelligence and its Role in SOC</a></p>
-        </article>
-    </section>
+    <section class="section section-credentials" id="credentials"><div class="shell credentials-grid"><div><span class="section-index">05 / BACKGROUND</span><h2>Keep learning.<br><span class="gradient-text">Keep improving.</span></h2><p class="credential-intro">Grounded in computer networking, continuously growing through applied cybersecurity experience and postgraduate study.</p></div><div class="credential-cards"><div class="credential-card"><span class="credential-label">EDUCATION / CURRENT</span><h3>MSc Cybersecurity with Placement Year</h3><p>University of Hertfordshire · United Kingdom</p><span class="credential-date">JAN 2026 — JAN 2028 (EXPECTED)</span></div><div class="credential-card"><span class="credential-label">EDUCATION / COMPLETED</span><h3>BSc (Hons) Computer Networking and IT Security</h3><p>Islington College · London Metropolitan University</p><span class="credential-date">GRADUATED JAN 2024</span></div><div class="credential-card"><span class="credential-label">CERTIFICATIONS</span><h3>Industry credentials</h3><p>Tenable Certified MSSP Practitioner · TCSE-VM · TCSA-VM · Fortinet NSE 1, 2 & 3</p></div></div></div></section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <form id="contact-form">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Your name">
-            
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="Your email">
-            
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required placeholder="Your message"></textarea>
-            
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>© 2025 Nirmal Poudel. All Rights Reserved.</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/nirmal-poudel/" target="_blank" class="social-icon">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/nirmal7-np" target="_blank" class="social-icon">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="mailto:poudelnirmal7777@gmail.com" class="social-icon">
-                <i class="fas fa-envelope"></i>
-            </a>
-        </div>
-        
-    </footer>
+    <section class="section section-contact" id="contact"><div class="shell contact-shell"><div><span class="section-index">06 / CONTACT</span><h2>Let's build something<br><span class="gradient-text">more secure.</span></h2><p>Open to conversations about SOC analyst opportunities, placement roles, security engineering and collaborative projects.</p><a class="contact-email" href="mailto:poudelnirmal7777@gmail.com">poudelnirmal7777@gmail.com <span aria-hidden="true">↗</span></a></div><div class="contact-panel"><div class="contact-panel-head"><span class="live-dot"></span> CONNECTION READY</div><p>Interested in working together?<br>I'd be happy to hear from you.</p><a class="button button-primary" href="mailto:poudelnirmal7777@gmail.com?subject=Hello%20Nirmal%20%E2%80%94%20from%20your%20portfolio">Send an email <span aria-hidden="true">↗</span></a><div class="contact-panel-links"><a href="https://www.linkedin.com/in/nirmal-poudel/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/nirmal7-np" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></div></section>
+  </main>
+  <footer class="footer"><div class="shell footer-inner"><a class="brand" href="#top"><span class="brand-mark">N<span class="brand-dot">.</span></span></a><span>© <span id="year">2026</span> NIRMAL POUDEL. BUILT WITH PURPOSE.</span><a href="#top">BACK TO TOP ↑</a></div></footer>
 </body>
 </html>

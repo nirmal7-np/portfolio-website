@@ -1,50 +1,37 @@
-```markdown
-# Portfolio Website
+# Nirmal Poudel — Cybersecurity Portfolio
 
-Welcome to my personal portfolio website! This project showcases my skills, projects, and professional background in a clean and responsive design.
+A responsive, no-build, static GitHub Pages website tailored to my cybersecurity CV.
 
-## 🖥️ Live Demo
-You can view the live version of the website here: poudelnirmal.com.np
+## Features
+- Dark cybersecurity design with optional light mode
+- Responsive desktop and mobile layouts
+- Security-operations-inspired terminal illustration
+- Professional experience, skill areas, education, certifications and selected work
+- Accessible navigation and reduced-motion support
+- Static HTML, CSS and JavaScript — no framework, npm or backend required
 
-## 📂 Project Structure
+## Local preview
+Open `index.html` in your browser, or in this folder run:
+
+```bash
+python3 -m http.server 8000
 ```
-portfolio-website-main/
-│── index.html         # Main HTML file
-│── styles/            # CSS stylesheets
-│── scripts/           # JavaScript files
-│── Style/             # Additional styling assets
-│── CNAME              # Custom domain configuration (if applicable)
-│── README.md          # Project documentation
-```
 
-## 🚀 Features
-- Fully responsive and mobile-friendly design
-- Smooth animations and transitions
-- Interactive elements and navigation
-- Well-structured and clean code
-- Easy to customize and extend
+Then open `http://localhost:8000`.
 
-## 🛠️ Technologies Used
-- **HTML5** - Markup structure
-- **CSS3** - Styling and layout
-- **JavaScript** - Interactive functionality
+## Replace the GitHub Pages website
+Repository: `nirmal7-np/portfolio-website`
 
-## 📜 Installation & Usage
-To run this project locally, follow these steps:
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/nirmal7-np/portfolio-website.git
-   ```
-2. Navigate to the project directory:
-   ```sh
-   cd portfolio-website-main
-   ```
-3. Open `index.html` in your browser.
+1. Back up your existing site or work on a feature branch.
+2. Copy `index.html`, `favicon.svg`, `styles/main.css`, `scripts/main.js`, `README.md`, and `CNAME` into the repository root (overwriting the old files with the same names).
+3. Commit and push to `main` (or create a pull request from your branch and merge it).
+4. In GitHub **Settings → Pages**, confirm **Deploy from a branch** is set to `main` / `(root)`.
+5. Under **Custom domain**, keep `poudelnirmal.com.np`, and enable **Enforce HTTPS** when available.
 
-## 🌟 Contributing
-Feel free to contribute to this project! If you find any issues or want to add new features, create a pull request.
+GitHub Pages serves the `index.html` file automatically. The retained `CNAME` file keeps the current domain mapping. No DNS changes should be needed if the existing domain is already working through GitHub Pages.
 
-## 📧 Contact
-For any inquiries or feedback, reach out to me.
+## Content maintenance
+Edit `index.html` directly to update career details and project writeups. The showcased projects are **professional work areas**, not claims of publicly documented client projects. Links to repositories point to the public GitHub profile rather than inventing project URLs.
 
----
+## Privacy
+The public website intentionally omits the street address, personal phone number, detailed visa status, and the full PDF CV. Only the professional city, public profiles and email are displayed.
